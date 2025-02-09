@@ -2,6 +2,9 @@
 
 Esta es una App con Angular y NestJS como parter de una evaluación para Desarrollador NodeJS con NestJS
 
+![App main page](utilities/main.png)
+![create alumno form](utilities/create.png)
+
 ## Elementos utilizados
 
 - **Frontend**: Angular (v18)
