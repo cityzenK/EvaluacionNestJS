@@ -1,0 +1,55 @@
+services:
+  # MongoDB service
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ruser1
+      MONGO_INITDB_ROOT_PASSWORD: rpassw1
+      MONGO_INITDB_DATABASE: escuela
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+  # NestJS Backend Service
+  backend:
+    build:
+      context: ./backend # Path to your NestJS backend folder
+    container_name: nestjs-backend
+    restart: always
+    environment:
+      MONGODB_URL: mongodb://root:rootpassword@mongo:27017/
+      API_KEY: f2262fa054mshe5485a179fce5dcp1a22d0jsn3794fccb2f95
+      NODE_ENV: "escuela"
+
+    ports:
+      - "3000:3000" # Adjust the backend port if necessary
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  # Angular Frontend Service
+  frontend:
+    build:
+      context: ./frontend # Path to your Angular project folder
+    container_name: angular-frontend
+    restart: always
+    ports:
+      - "4200:80" # Angular default port
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
