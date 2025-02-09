@@ -1,6 +1,6 @@
 # EvaluacionNestJs
 
-Esta es una App con Angular y NestJS como parter de una evaluación para Desarrollador NodeJS con NestJS
+Esta es una App con Angular y NestJS como parte de una evaluación para Desarrollador NodeJS con NestJS
 
 ![App main page](utilities/main.png)
 ![create alumno form](utilities/create.png)
