@@ -1,0 +1,28 @@
+<ul>
+  <table class="talbe-fixed text-sm text-left rtl:text-right text-gray-500">
+    <thead>
+      <tr>
+        <th class="px-6 py-3">Nombre del alumno</th>
+        <th class="px-6 py-3">Fecha de nacimiento</th>
+        <th class="px-6 py-3">Nombre del padre</th>
+        <th class="px-6 py-3">Nombre de la madre</th>
+        <th class="px-6 py-3">Grado</th>
+        <th class="px-6 py-3">Sección</th>
+        <th class="px-6 py-3">Fecha de ingreso</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (alumno of alumnos; track $index) {
+        <tr class="odd:bg-white even:bg-grey-100">
+          <td class="border px-4 py-2">{{ alumno.Nombre }}</td>
+          <td class="border px-4 py-2">{{ alumno.FechaNacimiento }}</td>
+          <td class="border px-4 py-2">{{ alumno.NombrePadre }}</td>
+          <td class="border px-4 py-2">{{ alumno.NombreMadre }}</td>
+          <td class="border px-4 py-2 text-center">{{ alumno.Grado }}</td>
+          <td class="border px-4 py-2 text-center">{{ alumno.Seccion }}</td>
+          <td class="border px-4 py-2">{{ alumno.FechaIngreso }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</ul>
