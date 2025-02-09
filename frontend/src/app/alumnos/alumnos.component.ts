@@ -6,7 +6,6 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { AlumnoService } from './services/alumno.service';
-import { ActivatedRoute } from '@angular/router';
 import { Alumno } from './models/alumno.model';
 
 @Component({

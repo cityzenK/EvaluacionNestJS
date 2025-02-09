@@ -7,6 +7,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { Alumno } from '../alumnos/models/alumno.model';
+import { CreateService } from './service/create.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-modal-create-alumno',
@@ -18,10 +20,23 @@ import { Alumno } from '../alumnos/models/alumno.model';
 export class ModalCreateAlumnoComponent implements OnInit {
   alumnoForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private createService: CreateService,
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
+  }
+  sendAlumno(alumno: Alumno) {
+    this.createService.createAlumno(alumno).subscribe(
+      (response) => {
+        console.log('Alumno Agregado', response);
+      },
+      (error) => {
+        console.error('Error al ingresar alumno', error);
+      },
+    );
   }
 
   createForm(): void {
@@ -42,6 +57,7 @@ export class ModalCreateAlumnoComponent implements OnInit {
       formData.FechaIngreso = new Date(formData.FechaIngreso);
       formData.FechaNacimiento = new Date(formData.FechaNacimiento);
       console.log(formData);
+      this.sendAlumno(formData);
     } else {
       console.log('Form is invalid');
     }

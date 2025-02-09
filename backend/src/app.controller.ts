@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Alumno } from './entities/alumno.entity';
+import { CreateAlumnoDTO } from './dto/create-alumno.dto';
 
 @Controller()
 export class AppController {
@@ -12,15 +13,15 @@ export class AppController {
   }
 
   @Get('consultar-alumno/:idGrado')
-  getAlumnoById(@Param('idGrado') id: string): Alumno[] {
-    if (id != '0') {
-      return this.appService.getAlumnoById(id);
+  async getAlumnoById(@Param('idGrado') grado: string): Promise<Alumno[]> {
+    if (grado != '0') {
+      return this.appService.getAlumnoByGrade(grado);
     }
     return this.appService.getAllAlumnos();
   }
 
   @Post('crear-alumno')
-  creteAlumno(@Body() alumnoPayload: Alumno): string {
+  creteAlumno(@Body() alumnoPayload: CreateAlumnoDTO) {
     return this.appService.createAlumno(alumnoPayload);
   }
 }

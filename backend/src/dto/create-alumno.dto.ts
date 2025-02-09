@@ -1,4 +1,4 @@
-export class Alumno {
+export class CreateAlumnoDTO {
   Nombre: string;
   FechaNacimiento: Date;
   NombrePadre: string;
