@@ -114,6 +114,10 @@ export class AppService {
     return this.alumnos.filter((x: Alumno) => x.Grado == id);
   }
 
+  getAllAlumnos(): Alumno[] {
+    return this.alumnos;
+  }
+
   createAlumno(alumno: Alumno): string {
     this.alumnos.push(alumno);
     if (this.alumnos.find((record: Alumno) => (record.id = alumno.id))) {

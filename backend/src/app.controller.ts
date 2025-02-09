@@ -13,7 +13,10 @@ export class AppController {
 
   @Get('consultar-alumno/:idGrado')
   getAlumnoById(@Param('idGrado') id: string): Alumno[] {
-    return this.appService.getAlumnoById(id);
+    if (id != '0') {
+      return this.appService.getAlumnoById(id);
+    }
+    return this.appService.getAllAlumnos();
   }
 
   @Post('crear-alumno')
