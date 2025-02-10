@@ -22,7 +22,7 @@ services:
     container_name: nestjs-backend
     restart: always
     environment:
-      MONGODB_URL: mongodb://root:rootpassword@mongo:27017/
+      MONGODB_URL: mongodb://ruser1:rpassw1@mongo:27017/
       API_KEY: f2262fa054mshe5485a179fce5dcp1a22d0jsn3794fccb2f95
       NODE_ENV: "escuela"
 
